@@ -1,0 +1,24 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "RG483P5C3Z.com.yxungmin.housingassistant",
+          "RG483P5C3Z.com.yxungmin.housingassistant.dev"
+        ],
+        "components": [
+          {
+            "/": "/n/*",
+            "comment": "공고 페이지는 앱이 연다"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "RG483P5C3Z.com.yxungmin.housingassistant",
+      "RG483P5C3Z.com.yxungmin.housingassistant.dev"
+    ]
+  }
+}
