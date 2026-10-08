@@ -18,7 +18,7 @@
 <style>:root{color-scheme:light dark;--bg:#fff;--fg:#17171c;--fg2:#4a4a55;--fg3:#7a7a87;--line:#e8e8ee;--card:#f5f5f8;--primary:#0FB25F;--onprimary:#fff;--warnbg:#fff7e6;--warnfg:#8a5a00}
 @media(prefers-color-scheme:dark){:root{--bg:#17171c;--fg:#f2f2f5;--fg2:#c2c2cc;--fg3:#8d8d99;--line:#2c2c34;--card:#22222a;--primary:#2ED27C;--onprimary:#0d1a12;--warnbg:#3a2f14;--warnfg:#f0c674}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;word-break:keep-all}
-main{max-width:680px;margin:0 auto;padding:20px 20px 64px}header{display:flex;align-items:center;justify-content:space-between;padding:4px 0 20px}header a{color:var(--fg);text-decoration:none;font-weight:700}
+main{max-width:680px;margin:0 auto;padding:20px 20px 64px}header{display:flex;align-items:center;justify-content:space-between;padding:4px 0 20px}header a{color:var(--fg);text-decoration:none;font-weight:700}header .brand{display:flex;align-items:center;gap:8px}header .brand img{border-radius:7px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.tag{font-size:13px;padding:3px 10px;border-radius:999px;background:var(--card);color:var(--fg2)}.tag.on{background:var(--primary);color:var(--onprimary)}
 h1{font-size:24px;line-height:1.35;margin:0 0 6px}.sub{color:var(--fg2);margin:0 0 20px}
 .card{background:var(--card);border-radius:16px;padding:18px 20px;margin:0 0 16px}.card h2{font-size:15px;margin:0 0 10px;color:var(--fg2)}
@@ -31,7 +31,7 @@ footer{color:var(--fg3);font-size:13px;line-height:1.6;margin-top:28px}footer a{
 </head>
 <body>
 <main>
-<header><a href="https://gonggongbiseo.kr/">공공주택 비서</a><a href="https://gonggongbiseo.kr/" style="font-weight:400;color:var(--fg3);font-size:14px">공고 목록</a></header>
+<header><a href="https://gonggongbiseo.kr/" class="brand"><img src="https://gonggongbiseo.kr/logo.png" alt="" width="28" height="28">공공주택 비서</a><a href="https://gonggongbiseo.kr/" style="font-weight:400;color:var(--fg3);font-size:14px">공고 목록</a></header>
 
 <div class="tags"><span class="tag">SH</span><span class="tag">기타</span><span class="tag">서울</span><span class="tag on">접수 중</span></div>
 <h1>2026년 신정도시마을 잔여세대 입주자모집공고(26. 9. 23.)</h1>
@@ -46,13 +46,13 @@ footer{color:var(--fg3);font-size:13px;line-height:1.6;margin-top:28px}footer a{
 <p class="src" style="margin:10px 0 0">기준 숫자와 내 조건의 비교는 앱에서 해요 — 소득·자산은 휴대폰에만 저장되고 저희도 볼 수 없어요.</p></section>
 <section class="cta" id="cta"><h2>이 공고, 나한테 맞을까?</h2><p>생년월일·가구·소득 같은 조건을 넣으면 공고의 조건 한 줄 한 줄과 맞춰 봐 드려요. 모르는 건 건너뛰어도 돼요.</p>
 <a class="btn primary" id="open-app" href="housingassistant://n/SH/310673">앱에서 이 공고 보기</a>
-<div class="stores"><a class="btn" href="https://apps.apple.com/kr/app/id6815055816">App Store</a><a class="btn" href="https://play.google.com/store/apps/details?id=com.yxungmin.housingassistant">Google Play</a></div></section>
+<div class="stores"><a class="btn" href="https://apps.apple.com/kr/app/id6815055816">App Store</a></div><p class="src" style="margin:8px 0 0">안드로이드는 준비 중이에요.</p></section>
 <section class="card"><h2>원문</h2><p style="margin:0 0 6px"><a href="https://tomybypxvhrkwvfnthva.supabase.co/storage/v1/object/public/announcement-pdfs/SH/310673/v1.pdf">공고문 PDF</a></p><p style="margin:0"><a href="https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/view.do?multi_itm_seq=2&amp;seq=310673">SH 공고 페이지</a></p></section>
 <footer>
 <p>공공주택 비서는 LH·SH 공식 서비스가 아니에요. 이 페이지의 숫자는 공고문에서 옮긴 것이고(쪽수 표시), 신청 자격은 기관이 서류로 확인해요. AI가 옮긴 조건은 틀릴 수 있으니 공고문 원문과 함께 봐 주세요.</p>
 <p><a href="https://yxungmin.github.io/housing-assistant-legal/terms.html">이용약관</a> · <a href="https://yxungmin.github.io/housing-assistant-legal/privacy.html">개인정보처리방침</a> · <a href="https://yxungmin.github.io/housing-assistant-legal/support.html">문의</a></p>
 </footer>
 </main>
-<script>(function(){var b=document.getElementById('open-app');if(!b)return;b.addEventListener('click',function(e){e.preventDefault();var ua=navigator.userAgent;var store=/iPhone|iPad|iPod/.test(ua)?"https://apps.apple.com/kr/app/id6815055816":"https://play.google.com/store/apps/details?id=com.yxungmin.housingassistant";var t=setTimeout(function(){if(document.visibilityState!=='hidden')location.href=store},1500);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://"+"n/SH/310673";});})();</script>
+<script>(function(){var b=document.getElementById('open-app');if(!b)return;b.addEventListener('click',function(e){e.preventDefault();var ua=navigator.userAgent;var store=/iPhone|iPad|iPod/.test(ua)?"https://apps.apple.com/kr/app/id6815055816":null;var t=setTimeout(function(){if(document.visibilityState==='hidden')return;if(store)location.href=store;else alert('안드로이드 앱은 준비 중이에요. 지금은 iPhone에서 쓸 수 있어요.')},1500);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://"+"n/SH/310673";});})();</script>
 </body>
 </html>
