@@ -47,14 +47,28 @@ footer{color:var(--fg3);font-size:13px;line-height:1.6;margin-top:28px}footer a{
 <p style="margin:0 0 4px">공고문에 있는 기준</p><ul class="plain"><li>소득 기준 <span class="src">공고문 7쪽</span></li><li>자산 기준 <span class="src">공고문 7쪽</span></li><li>자동차 가액 기준 <span class="src">공고문 7쪽</span></li><li>무주택 요건 <span class="src">공고문 4쪽</span></li><li>거주 요건 <span class="src">공고문 4쪽</span></li></ul>
 <p class="src" style="margin:10px 0 0">기준 숫자와 내 조건의 비교는 앱에서 해요 — 소득·자산은 휴대폰에만 저장되고 저희도 볼 수 없어요.</p></section>
 <section class="cta" id="cta"><h2>이 공고, 나한테 맞을까?</h2><p>생년월일·가구·소득 같은 조건을 넣으면 공고의 조건 한 줄 한 줄과 맞춰 봐 드려요. 모르는 건 건너뛰어도 돼요.</p>
-<a class="btn primary" id="open-app" href="housingassistant://n/LH/2015122300020727">앱에서 이 공고 보기</a>
-<div class="stores"><a href="https://apps.apple.com/kr/app/id6815055816"><img src="https://gonggongbiseo.kr/badges/app-store-ko.svg" alt="App Store에서 다운로드" height="40"></a></div><p class="src" style="margin:8px 0 0">안드로이드는 준비 중이에요.</p></section>
+<a class="btn primary" id="open-app" data-mp="web_open_app_clicked" href="housingassistant://n/LH/2015122300020727">앱에서 이 공고 보기</a>
+<div class="stores"><a href="https://apps.apple.com/kr/app/id6815055816" data-mp="web_store_clicked" data-mp-store="ios"><img src="https://gonggongbiseo.kr/badges/app-store-ko.svg" alt="App Store에서 다운로드" height="40"></a></div><p class="src" style="margin:8px 0 0">안드로이드는 준비 중이에요.</p></section>
 <section class="card"><h2>원문</h2><p style="margin:0 0 6px"><a href="https://tomybypxvhrkwvfnthva.supabase.co/storage/v1/object/public/announcement-pdfs/LH/2015122300020727/v1.pdf">공고문 PDF</a></p><p style="margin:0"><a href="https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020727&amp;ccrCnntSysDsCd=03&amp;uppAisTpCd=06&amp;aisTpCd=09&amp;mi=1026">LH 공고 페이지</a></p></section>
 <footer>
 <p>공공주택 비서는 LH·SH 공식 서비스가 아니에요. 이 페이지의 숫자는 공고문에서 옮긴 것이고(쪽수 표시), 신청 자격은 기관이 서류로 확인해요. AI가 옮긴 조건은 틀릴 수 있으니 공고문 원문과 함께 봐 주세요.</p>
 <p><a href="https://yxungmin.github.io/housing-assistant-legal/terms.html">이용약관</a> · <a href="https://yxungmin.github.io/housing-assistant-legal/privacy.html">개인정보처리방침</a> · <a href="https://yxungmin.github.io/housing-assistant-legal/support.html">문의</a></p>
 </footer>
 </main>
-<script>(function(){var b=document.getElementById('open-app');if(!b)return;b.addEventListener('click',function(e){e.preventDefault();var ua=navigator.userAgent;var store=/iPhone|iPad|iPod/.test(ua)?"https://apps.apple.com/kr/app/id6815055816":null;var t=setTimeout(function(){if(document.visibilityState==='hidden')return;if(store)location.href=store;else alert('안드로이드 앱은 준비 중이에요. 지금은 iPhone에서 쓸 수 있어요.')},1500);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://"+"n/LH/2015122300020727";});})();</script>
+<script>(function(){var b=document.getElementById('open-app');if(!b)return;b.addEventListener('click',function(e){e.preventDefault();var ua=navigator.userAgent;var store=/iPhone|iPad|iPod/.test(ua)?"https://apps.apple.com/kr/app/id6815055816":null;var t=setTimeout(function(){if(document.visibilityState==='hidden')return;if(store)location.href=store;else alert('안드로이드 앱은 준비 중이에요. 지금은 iPhone에서 쓸 수 있어요.')},1500);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://"+"n/LH/2015122300020727";});})();</script><script>(function(){
+var T="5a9744b22b1d2459ac28a54f3650d30d",U="https://api.mixpanel.com/track?ip=0",P={"page":"notice","provider":"LH","housing_type":"long_term_rental","phase":"upcoming"};
+if(Date.now()<Date.parse("2026-11-09T00:00:00+09:00")||location.hostname!=="gonggongbiseo.kr")return;
+function rid(){try{if(window.crypto&&crypto.randomUUID)return crypto.randomUUID()}catch(e){}return Date.now().toString(36)+Math.random().toString(36).slice(2)}
+var id;try{id=localStorage.getItem('gb_anon_id');if(!id){id=rid();localStorage.setItem('gb_anon_id',id)}}catch(e){id=rid()}
+function ref(){var r=document.referrer,h;if(!r)return'direct';try{h=new URL(r).hostname}catch(e){return'other'}if(h===location.hostname)return'internal';
+var m=[['instagram','instagram'],['kakao','kakao'],['naver','naver'],['daum','daum'],['google','google']];for(var i=0;i<m.length;i++)if(h.indexOf(m[i][0])>=0)return m[i][1];return'other'}
+var ua=navigator.userAgent,os=/iPhone|iPad|iPod/.test(ua)?'iOS':/Android/.test(ua)?'Android':/Windows/.test(ua)?'Windows':/Mac OS/.test(ua)?'Mac OS X':'Other';
+function send(e,x){var p={token:T,distinct_id:id,time:Date.now(),$insert_id:rid().replace(/[^0-9a-zA-Z-]/g,'').slice(0,36),platform:'web',$os:os},k;
+for(k in P)p[k]=P[k];for(k in x)p[k]=x[k];var b='data='+encodeURIComponent(JSON.stringify([{event:e,properties:p}]));
+try{if(navigator.sendBeacon&&navigator.sendBeacon(U,new Blob([b],{type:'application/x-www-form-urlencoded'})))return}catch(z){}
+try{fetch(U,{method:'POST',body:b,keepalive:true,headers:{'content-type':'application/x-www-form-urlencoded'}}).catch(function(){})}catch(z){}}
+send('web_page_viewed',{ref:ref()});
+document.addEventListener('click',function(ev){var a=ev.target&&ev.target.closest&&ev.target.closest('[data-mp]');if(!a)return;var x={},s=a.getAttribute('data-mp-store');if(s)x.store=s;send(a.getAttribute('data-mp'),x)},true);
+})();</script>
 </body>
 </html>
