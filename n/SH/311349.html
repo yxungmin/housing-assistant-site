@@ -66,7 +66,8 @@ function send(e,x){var p={token:T,distinct_id:id,time:Date.now(),$insert_id:rid(
 for(k in P)p[k]=P[k];for(k in x)p[k]=x[k];var b='data='+encodeURIComponent(JSON.stringify([{event:e,properties:p}]));
 try{if(navigator.sendBeacon&&navigator.sendBeacon(U,new Blob([b],{type:'application/x-www-form-urlencoded'})))return}catch(z){}
 try{fetch(U,{method:'POST',body:b,keepalive:true,headers:{'content-type':'application/x-www-form-urlencoded'}}).catch(function(){})}catch(z){}}
-send('web_page_viewed',{ref:ref()});
+function host(){var r=document.referrer,h;if(!r)return'';try{h=new URL(r).hostname.replace(/^www\./,'')}catch(e){return''}return h===location.hostname?'':h.slice(0,80)}
+var v={ref:ref()},rh=host();if(rh)v.ref_host=rh;send('web_page_viewed',v);
 document.addEventListener('click',function(ev){var a=ev.target&&ev.target.closest&&ev.target.closest('[data-mp]');if(!a)return;var x={},s=a.getAttribute('data-mp-store');if(s)x.store=s;send(a.getAttribute('data-mp'),x)},true);
 })();</script>
 </body>
