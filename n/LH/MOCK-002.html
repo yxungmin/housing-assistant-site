@@ -57,6 +57,21 @@ footer{color:var(--fg3);font-size:13px;line-height:1.6;margin-top:28px}footer a{
 <p><a href="https://yxungmin.github.io/housing-assistant-legal/terms.html">이용약관</a> · <a href="https://yxungmin.github.io/housing-assistant-legal/privacy.html">개인정보처리방침</a> · <a href="https://yxungmin.github.io/housing-assistant-legal/support.html">문의</a></p>
 </footer>
 </main>
-<script>(function(){var b=document.getElementById('open-app');if(!b)return;b.addEventListener('click',function(e){e.preventDefault();var ua=navigator.userAgent;var store=/iPhone|iPad|iPod/.test(ua)?"https://apps.apple.com/kr/app/id6815055816":null;var t=setTimeout(function(){if(document.visibilityState==='hidden')return;if(store)location.href=store;else alert('안드로이드 앱은 준비 중이에요. 지금은 iPhone에서 쓸 수 있어요.')},1500);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://"+"n/LH/MOCK-002";});})();</script>
+<script>(function(){var b=document.getElementById('open-app');if(!b)return;b.addEventListener('click',function(e){e.preventDefault();var ua=navigator.userAgent;var store=/iPhone|iPad|iPod/.test(ua)?"https://apps.apple.com/kr/app/id6815055816":null;var t=setTimeout(function(){if(document.visibilityState==='hidden')return;if(store)location.href=store;else alert('안드로이드 앱은 준비 중이에요. 지금은 iPhone에서 쓸 수 있어요.')},1500);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://"+"n/LH/MOCK-002";});})();</script><script>(function(){
+var T="5a9744b22b1d2459ac28a54f3650d30d",U="https://api.mixpanel.com/track?ip=0",P={"page":"notice","provider":"LH","housing_type":"happy","phase":"closed"};
+if(Date.now()<Date.parse("2026-10-10T00:00:00+09:00")||location.hostname!=="gonggongbiseo.kr")return;
+function rid(){try{if(window.crypto&&crypto.randomUUID)return crypto.randomUUID()}catch(e){}return Date.now().toString(36)+Math.random().toString(36).slice(2)}
+var id;try{id=localStorage.getItem('gb_anon_id');if(!id){id=rid();localStorage.setItem('gb_anon_id',id)}}catch(e){id=rid()}
+var AI=["chatgpt","openai","perplexity","gemini.google","bard.google","copilot.microsoft","claude.ai","wrtn","liner","you.com"];function isAi(s){s=String(s||'').toLowerCase();for(var i=0;i<AI.length;i++)if(s.indexOf(AI[i])>=0)return true;return false}
+function ref(){var r=document.referrer,h,q='';try{q=new URLSearchParams(location.search||'').get('utm_source')||''}catch(e){}if(q&&isAi(q))return'ai';if(!r)return'direct';try{h=new URL(r).hostname}catch(e){return'other'}if(h===location.hostname)return'internal';if(isAi(h))return'ai';
+var m=[['instagram','instagram'],['kakao','kakao'],['naver','naver'],['daum','daum'],['google','google']];for(var i=0;i<m.length;i++)if(h.indexOf(m[i][0])>=0)return m[i][1];return'other'}
+var ua=navigator.userAgent,os=/iPhone|iPad|iPod/.test(ua)?'iOS':/Android/.test(ua)?'Android':/Windows/.test(ua)?'Windows':/Mac OS/.test(ua)?'Mac OS X':'Other';
+function send(e,x){var p={token:T,distinct_id:id,time:Date.now(),$insert_id:rid().replace(/[^0-9a-zA-Z-]/g,'').slice(0,36),platform:'web',$os:os},k;
+for(k in P)p[k]=P[k];for(k in x)p[k]=x[k];var b='data='+encodeURIComponent(JSON.stringify([{event:e,properties:p}]));
+try{if(navigator.sendBeacon&&navigator.sendBeacon(U,new Blob([b],{type:'application/x-www-form-urlencoded'})))return}catch(z){}
+try{fetch(U,{method:'POST',body:b,keepalive:true,headers:{'content-type':'application/x-www-form-urlencoded'}}).catch(function(){})}catch(z){}}
+send('web_page_viewed',{ref:ref()});
+document.addEventListener('click',function(ev){var a=ev.target&&ev.target.closest&&ev.target.closest('[data-mp]');if(!a)return;var x={},s=a.getAttribute('data-mp-store');if(s)x.store=s;send(a.getAttribute('data-mp'),x)},true);
+})();</script>
 </body>
 </html>
