@@ -1,0 +1,28 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.yxungmin.housingassistant",
+      "sha256_cert_fingerprints": [
+        "96:BD:32:2C:98:D3:48:C8:5D:9C:FD:8F:3A:E1:21:39:F9:87:96:33:EA:D2:FF:2D:C8:4C:6B:60:B6:9D:CB:FE",
+        "97:30:11:03:DD:02:72:30:B7:50:EC:9C:E5:D2:D5:3E:4D:A2:FE:1A:8F:E9:10:7C:3C:D5:B5:C8:A0:7A:FC:A8"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.yxungmin.housingassistant.dev",
+      "sha256_cert_fingerprints": [
+        "96:BD:32:2C:98:D3:48:C8:5D:9C:FD:8F:3A:E1:21:39:F9:87:96:33:EA:D2:FF:2D:C8:4C:6B:60:B6:9D:CB:FE",
+        "97:30:11:03:DD:02:72:30:B7:50:EC:9C:E5:D2:D5:3E:4D:A2:FE:1A:8F:E9:10:7C:3C:D5:B5:C8:A0:7A:FC:A8"
+      ]
+    }
+  }
+]
