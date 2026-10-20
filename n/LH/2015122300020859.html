@@ -71,7 +71,7 @@ var soon=document.getElementById('android-soon');function showSoon(){if(soon){so
 if(location.hash==='#android-soon')showSoon();
 function go(e){e.preventDefault();var ua=navigator.userAgent;
 if(/iPhone|iPad|iPod/.test(ua)){location.href="https://apps.apple.com/kr/app/id6815055816";return}
-if(/Android/.test(ua)){var fb=""||location.href.split('#')[0]+'#android-soon';location.href="intent://n/LH/2015122300020859#Intent;scheme=housingassistant;package=com.yxungmin.housingassistant;S.browser_fallback_url=FB;end".replace('FB',encodeURIComponent(fb));return}
+if(/Android/.test(ua)){var ps="";if(!ps){alert("안드로이드 앱은 Google Play 출시 임박이에요.\n지금은 iPhone의 App Store에서 쓸 수 있어요.");showSoon();return}location.href="intent://n/LH/2015122300020859#Intent;scheme=housingassistant;package=com.yxungmin.housingassistant;S.browser_fallback_url=FB;end".replace('FB',encodeURIComponent(ps));return}
 var t=setTimeout(function(){if(document.visibilityState==='hidden')return;var c=document.getElementById('cta');if(c)c.scrollIntoView({block:'start',behavior:'smooth'})},1500);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://n/LH/2015122300020859";}
 for(var i=0;i<bs.length;i++)bs[i].addEventListener('click',go);})();</script><script>(function(){
