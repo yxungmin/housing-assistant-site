@@ -34,6 +34,7 @@ dl{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:8px 12px;margin:0}
 .perks{margin:0 0 14px;padding:0;list-style:none;display:grid;gap:6px}.perks li{padding-left:22px;position:relative;color:var(--fg2)}.perks li:before{content:"";position:absolute;left:0;top:9px;width:12px;height:12px;border-radius:50%;background:var(--primary)}
 .bar{display:none}@media(max-width:720px){.bar{display:block;position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);z-index:9}.bar .btn{margin:0}body.has-bar main{padding-bottom:120px}}
 #android-soon{margin:10px 0 0}
+.qr{display:flex;gap:16px;align-items:center;margin:14px 0 4px;padding:14px;border-radius:12px;background:var(--bg);border:1px solid var(--line);transition:box-shadow .3s}.qr[hidden]{display:none}.qr svg{flex:none;display:block;border-radius:6px}.qr b{display:block;margin:0 0 4px}.qr p{margin:0;font-size:14px;color:var(--fg2)}.qr.hl{box-shadow:0 0 0 3px var(--primary)}@media(max-width:420px){.qr{flex-direction:column;text-align:center}}
 .notice{background:var(--warnbg);color:var(--warnfg);border-radius:12px;padding:12px 16px;margin:0 0 16px}ul.plain{margin:0;padding-left:18px}
 .answer{font-size:18px;line-height:1.55;margin:0 0 20px}details{border-top:1px solid var(--line);padding:10px 0}details:first-of-type{border-top:0}summary{cursor:pointer;font-weight:600}details p{margin:8px 0 0;color:var(--fg2)}
 footer{color:var(--fg3);font-size:13px;line-height:1.6;margin-top:28px}footer a{color:var(--fg3)}.list a{display:block;padding:14px 0;border-top:1px solid var(--line);color:var(--fg);text-decoration:none}.list a:first-child{border-top:0}.list small{display:block;color:var(--fg3)}</style>
@@ -58,6 +59,7 @@ footer{color:var(--fg3);font-size:13px;line-height:1.6;margin-top:28px}footer a{
 <section class="cta" id="cta"><h2>이 공고, 나한테 맞을까?</h2><p>생년월일·가구·소득 같은 조건을 넣으면 공고의 조건 한 줄 한 줄과 맞춰 봐 드려요. 모르는 건 건너뛰어도 돼요.</p>
 <ul class="perks"><li>조건마다 맞음·확인 필요 표시 — 공고문 몇 쪽인지 함께</li><li>보증금을 올리면 월세가 얼마, 지금 필요한 현금은 얼마</li><li>관심 공고 접수 마감 3일 전에 알림</li></ul>
 <a class="btn primary open-app" id="open-app" data-mp="web_open_app_clicked" data-mp-where="cta" href="housingassistant://n/SH/310650">앱에서 이 공고 보기</a>
+
 <div class="stores"><a href="https://apps.apple.com/kr/app/id6815055816" data-mp="web_store_clicked" data-mp-store="ios"><img src="https://gonggongbiseo.kr/badges/app-store-ko.svg" alt="App Store에서 다운로드" height="40"></a><span class="btn soon" role="button" aria-disabled="true"><b>●</b> Google Play 출시 임박</span></div><p class="src" id="android-soon" hidden>안드로이드 앱은 Google Play 출시 임박이에요. 지금은 iPhone의 App Store에서 쓸 수 있어요.</p></section>
 <section class="card"><h2>원문</h2><p style="margin:0 0 6px"><a href="https://tomybypxvhrkwvfnthva.supabase.co/storage/v1/object/public/announcement-pdfs/SH/310650/v1.pdf">공고문 PDF</a></p><p style="margin:0"><a href="https://www.i-sh.co.kr/main/lay2/program/S1T294C297/www/brd/m_247/view.do?multi_itm_seq=2&amp;seq=310650">SH 공고 페이지</a></p></section>
 
@@ -69,9 +71,12 @@ footer{color:var(--fg3);font-size:13px;line-height:1.6;margin-top:28px}footer a{
 <script>(function(){var bs=document.querySelectorAll('.open-app');if(!bs.length)return;if(document.querySelector('.bar'))document.body.classList.add('has-bar');
 var soon=document.getElementById('android-soon');function showSoon(){if(soon){soon.hidden=false;soon.scrollIntoView({block:'center',behavior:'smooth'})}}
 if(location.hash==='#android-soon')showSoon();
-function go(e){e.preventDefault();var ua=navigator.userAgent;
-if(/iPhone|iPad|iPod/.test(ua)){location.href="https://apps.apple.com/kr/app/id6815055816";return}
-if(/Android/.test(ua)){var ps="";if(!ps){alert("안드로이드 앱은 Google Play 출시 임박이에요.\n지금은 iPhone의 App Store에서 쓸 수 있어요.");showSoon();return}location.href="intent://n/SH/310650#Intent;scheme=housingassistant;package=com.yxungmin.housingassistant;S.browser_fallback_url=FB;end".replace('FB',encodeURIComponent(ps));return}
+var ua=navigator.userAgent,tp=navigator.maxTouchPoints||0,ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&tp>1),and=/Android/.test(ua)||(/Linux/.test(ua)&&!/CrOS/.test(ua)&&tp>1),qr=document.getElementById('qr-card');
+if(!ios&&!and&&qr)qr.hidden=false;
+function go(e){e.preventDefault();
+if(ios){location.href="https://apps.apple.com/kr/app/id6815055816";return}
+if(and){var ps="";if(!ps){alert("안드로이드 앱은 Google Play 출시 임박이에요.\n지금은 iPhone의 App Store에서 쓸 수 있어요.");showSoon();return}location.href="intent://n/SH/310650#Intent;scheme=housingassistant;package=com.yxungmin.housingassistant;S.browser_fallback_url=FB;end".replace('FB',encodeURIComponent(ps));return}
+if(qr){qr.hidden=false;qr.scrollIntoView({block:'center',behavior:'smooth'});qr.classList.add('hl');setTimeout(function(){qr.classList.remove('hl')},1800);return}
 var t=setTimeout(function(){if(document.visibilityState==='hidden')return;var c=document.getElementById('cta');if(c)c.scrollIntoView({block:'start',behavior:'smooth'})},1500);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://n/SH/310650";}
 for(var i=0;i<bs.length;i++)bs[i].addEventListener('click',go);})();</script><script>(function(){
@@ -82,7 +87,7 @@ var id;try{id=localStorage.getItem('gb_anon_id');if(!id){id=rid();localStorage.s
 var AI=["chatgpt","openai","perplexity","gemini.google","bard.google","copilot.microsoft","claude.ai","wrtn","liner","you.com"];function isAi(s){s=String(s||'').toLowerCase();for(var i=0;i<AI.length;i++)if(s.indexOf(AI[i])>=0)return true;return false}
 var m=[['threads','threads'],['instagram','instagram'],['kakao','kakao'],['naver','naver'],['daum','daum'],['google','google']];function known(s){s=String(s||'').toLowerCase();for(var i=0;i<m.length;i++)if(s.indexOf(m[i][0])>=0)return m[i][1];return''}
 function qs(k){try{return new URLSearchParams(location.search||'').get(k)||''}catch(e){return''}}
-function ref(){var r=document.referrer,h,q=qs('utm_source');if(q&&isAi(q))return'ai';if(q&&known(q))return known(q);if(!r)return'direct';try{h=new URL(r).hostname}catch(e){return'other'}if(h===location.hostname)return'internal';if(isAi(h))return'ai';return known(h)||'other'}
+function ref(){var r=document.referrer,h,q=qs('utm_source');if(q==='qr')return'qr';if(q&&isAi(q))return'ai';if(q&&known(q))return known(q);if(!r)return'direct';try{h=new URL(r).hostname}catch(e){return'other'}if(h===location.hostname)return'internal';if(isAi(h))return'ai';return known(h)||'other'}
 function utmc(){var c=qs('utm_content');return c?c.replace(/[^0-9A-Za-z_-]/g,'').slice(0,40):''}
 var ua=navigator.userAgent,os=/iPhone|iPad|iPod/.test(ua)?'iOS':/Android/.test(ua)?'Android':/Windows/.test(ua)?'Windows':/Mac OS/.test(ua)?'Mac OS X':'Other';
 function send(e,x){var p={token:T,distinct_id:id,time:Date.now(),$insert_id:rid().replace(/[^0-9a-zA-Z-]/g,'').slice(0,36),platform:'web',$os:os},k;
