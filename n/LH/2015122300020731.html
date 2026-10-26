@@ -43,7 +43,7 @@ footer{color:var(--fg3);font-size:13px;line-height:1.6;margin-top:28px}footer a{
 <main>
 <header><a href="https://gonggongbiseo.kr/" class="brand"><img src="https://gonggongbiseo.kr/logo.png" alt="공공주택 비서 로고" width="28" height="28">공공주택 비서</a><nav style="display:flex;gap:14px"><a href="https://gonggongbiseo.kr/" style="font-weight:400;color:var(--fg3);font-size:14px">공고 목록</a><a href="https://gonggongbiseo.kr/guide/" style="font-weight:400;color:var(--fg3);font-size:14px">용어 풀이</a></nav></header>
 
-<div class="tags"><span class="tag">LH</span><span class="tag">매입임대</span><span class="tag">경기</span><span class="tag">접수 예정</span></div>
+<div class="tags"><span class="tag">LH</span><span class="tag">매입임대</span><span class="tag">경기</span><span class="tag on">접수 중</span></div>
 <h1>[온라인 접수 불가, 관할 주거복지지사 현장접수] 경기남부지역본부 2026년 일반 매입임대주택 입주자 모집공고</h1>
 <p class="sub">경기 · 공고일 2026년 9월 10일</p>
 
@@ -80,7 +80,7 @@ if(qr){qr.hidden=false;qr.scrollIntoView({block:'center',behavior:'smooth'});qr.
 var t=setTimeout(function(){if(document.visibilityState==='hidden')return;var c=document.getElementById('cta');if(c)c.scrollIntoView({block:'start',behavior:'smooth'})},1500);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://n/LH/2015122300020731";}
 for(var i=0;i<bs.length;i++)bs[i].addEventListener('click',go);})();</script><script>(function(){
-var T="5a9744b22b1d2459ac28a54f3650d30d",U="https://api.mixpanel.com/track?ip=0",P={"page":"notice","provider":"LH","housing_type":"purchased_rental","phase":"upcoming"};
+var T="5a9744b22b1d2459ac28a54f3650d30d",U="https://api.mixpanel.com/track?ip=0",P={"page":"notice","provider":"LH","housing_type":"purchased_rental","phase":"open"};
 if(Date.now()<Date.parse("2026-10-10T00:00:00+09:00")||location.hostname!=="gonggongbiseo.kr")return;
 function rid(){try{if(window.crypto&&crypto.randomUUID)return crypto.randomUUID()}catch(e){}return Date.now().toString(36)+Math.random().toString(36).slice(2)}
 var id;try{id=localStorage.getItem('gb_anon_id');if(!id){id=rid();localStorage.setItem('gb_anon_id',id)}}catch(e){id=rid()}
