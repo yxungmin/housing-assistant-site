@@ -73,9 +73,11 @@ var soon=document.getElementById('android-soon');function showSoon(){if(soon){so
 if(location.hash==='#android-soon')showSoon();
 var ua=navigator.userAgent,tp=navigator.maxTouchPoints||0,ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&tp>1),and=/Android/.test(ua)||(/Linux/.test(ua)&&!/CrOS/.test(ua)&&tp>1),qr=document.getElementById('qr-card');
 if(!ios&&!and&&qr)qr.hidden=false;
-function go(e){e.preventDefault();
+var busy=0;function go(e){e.preventDefault();
 if(ios){location.href="https://apps.apple.com/kr/app/id6815055816";return}
-if(and){var ps="https://play.google.com/store/apps/details?id=com.yxungmin.housingassistant";if(!ps){alert("안드로이드 앱은 Google Play 출시 임박이에요.\n지금은 iPhone의 App Store에서 쓸 수 있어요.");showSoon();return}location.href="intent://n/LH/0000061179#Intent;scheme=housingassistant;package=com.yxungmin.housingassistant;S.browser_fallback_url=FB;end".replace('FB',encodeURIComponent(ps));return}
+if(and){var ps="https://play.google.com/store/apps/details?id=com.yxungmin.housingassistant";if(!ps){alert("안드로이드 앱은 Google Play 출시 임박이에요.\n지금은 iPhone의 App Store에서 쓸 수 있어요.");showSoon();return}if(busy){e.stopPropagation();return}busy=1;var o=[];for(var k=0;k<bs.length;k++){o[k]=bs[k].textContent;bs[k].textContent="Google Play로 이동하는 중…"}setTimeout(function(){busy=0;for(var k=0;k<bs.length;k++)bs[k].textContent=o[k]},4000);
+if(/KAKAOTALK|Instagram|FBAN|FBAV|NAVER|Line\/|DaumApps|Threads|; wv\)/i.test(ua)){location.href=ps;return}
+location.href="intent://n/LH/0000061179#Intent;scheme=housingassistant;package=com.yxungmin.housingassistant;S.browser_fallback_url=FB;end".replace('FB',encodeURIComponent(ps));setTimeout(function(){if(document.visibilityState!=='hidden')location.href=ps},2500);return}
 if(qr){qr.hidden=false;qr.scrollIntoView({block:'center',behavior:'smooth'});qr.classList.add('hl');setTimeout(function(){qr.classList.remove('hl')},1800);return}
 var t=setTimeout(function(){if(document.visibilityState==='hidden')return;var c=document.getElementById('cta');if(c)c.scrollIntoView({block:'start',behavior:'smooth'})},1500);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://n/LH/0000061179";}
