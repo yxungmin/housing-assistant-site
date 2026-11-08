@@ -76,14 +76,16 @@ var soon=document.getElementById('android-soon');function showSoon(){if(soon){so
 if(location.hash==='#android-soon')showSoon();
 var ua=navigator.userAgent,tp=navigator.maxTouchPoints||0,ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&tp>1),and=/Android/.test(ua)||(/Linux/.test(ua)&&!/CrOS/.test(ua)&&tp>1),qr=document.getElementById('qr-card');
 if(!ios&&!and&&qr)qr.hidden=false;
-var busy=0;function go(e){e.preventDefault();var w=(e.currentTarget&&e.currentTarget.getAttribute('data-mp-where'))||'btn';
-if(ios){location.href="https://apps.apple.com/kr/app/id6815055816?pt=129497679&ct=web-WHERE&mt=8".replace('WHERE',w);return}
-if(and){var ps="https://play.google.com/store/apps/details?id=com.yxungmin.housingassistant&referrer=utm_source%3Dweb%26utm_medium%3DWHERE%26utm_campaign%3Dweb-WHERE".split(encodeURIComponent('WHERE')).join(w);if(!ps){alert("안드로이드 앱은 Google Play 출시 임박이에요.\n지금은 iPhone의 App Store에서 쓸 수 있어요.");showSoon();return}if(busy){e.stopPropagation();return}busy=1;var o=[];for(var k=0;k<bs.length;k++){o[k]=bs[k].textContent;bs[k].textContent="Google Play로 이동하는 중…"}setTimeout(function(){busy=0;for(var k=0;k<bs.length;k++)bs[k].textContent=o[k]},4000);
+var busy=0;function fill(s,w){var g=(typeof window!=='undefined'&&window.gbSrc)||{},r=String(g.ref||'').replace(/[^0-9A-Za-z_.-]/g,'').slice(0,20),c=String(g.uc||'').replace(/[^0-9A-Za-z_.-]/g,'').slice(0,40);
+if(!r){s=s.split('-__R__').join('');r='web-'+w}s=s.split('__W__').join(w).split('__R__').join(r);return c?s.split('__C__').join(c):s.replace(/(%26|&)(utm_content|uc)(%3D|=)__C__/g,'')}
+function go(e){e.preventDefault();var w=(e.currentTarget&&e.currentTarget.getAttribute('data-mp-where'))||'btn';
+if(ios){location.href=fill("https://apps.apple.com/kr/app/id6815055816?pt=129497679&ct=web-__W__-__R__&mt=8",w);return}
+if(and){var ps=fill("https://play.google.com/store/apps/details?id=com.yxungmin.housingassistant&referrer=utm_source%3Dweb%26utm_medium%3D__W__%26utm_campaign%3D__R__%26utm_content%3D__C__%26n%3DLH.0000061198",w);if(!ps){alert("안드로이드 앱은 Google Play 출시 임박이에요.\n지금은 iPhone의 App Store에서 쓸 수 있어요.");showSoon();return}if(busy){e.stopPropagation();return}busy=1;var o=[];for(var k=0;k<bs.length;k++){o[k]=bs[k].textContent;bs[k].textContent="Google Play로 이동하는 중…"}setTimeout(function(){busy=0;for(var k=0;k<bs.length;k++)bs[k].textContent=o[k]},4000);
 if(/KAKAOTALK|Instagram|FBAN|FBAV|NAVER|Line\/|DaumApps|Threads|; wv\)/i.test(ua)){location.href=ps;return}
-location.href="intent://n/LH/0000061198#Intent;scheme=housingassistant;package=com.yxungmin.housingassistant;S.browser_fallback_url=FB;end".replace('FB',encodeURIComponent(ps));setTimeout(function(){if(document.visibilityState!=='hidden')location.href=ps},2500);return}
+location.href=fill("intent://n/LH/0000061198?src=web&where=__W__&ref=__R__&uc=__C__#Intent;scheme=housingassistant;package=com.yxungmin.housingassistant;S.browser_fallback_url=FB;end",w).replace('FB',encodeURIComponent(ps));setTimeout(function(){if(document.visibilityState!=='hidden')location.href=ps},2500);return}
 if(qr){qr.hidden=false;qr.scrollIntoView({block:'center',behavior:'smooth'});qr.classList.add('hl');setTimeout(function(){qr.classList.remove('hl')},1800);return}
 var t=setTimeout(function(){if(document.visibilityState==='hidden')return;var c=document.getElementById('cta');if(c)c.scrollIntoView({block:'start',behavior:'smooth'})},1500);
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href="housingassistant://n/LH/0000061198";}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')clearTimeout(t)});location.href=fill("housingassistant://n/LH/0000061198?src=web&where=__W__&ref=__R__&uc=__C__",w);}
 for(var i=0;i<bs.length;i++)bs[i].addEventListener('click',go);})();</script><script>(function(){
 var T="5a9744b22b1d2459ac28a54f3650d30d",U="https://api.mixpanel.com/track?ip=0",P={"page":"notice","provider":"LH","housing_type":"public_sale","phase":"upcoming"};
 if(Date.now()<Date.parse("2026-10-10T00:00:00+09:00")||location.hostname!=="gonggongbiseo.kr")return;
@@ -101,6 +103,8 @@ try{if(navigator.sendBeacon&&navigator.sendBeacon(U,new Blob([b],{type:'applicat
 try{fetch(U,{method:'POST',body:b,keepalive:true,headers:{'content-type':'application/x-www-form-urlencoded'}}).catch(function(){})}catch(z){}}
 function host(){var r=document.referrer,h;if(!r)return'';try{h=new URL(r).hostname.replace(/^www\./,'')}catch(e){return''}return h===location.hostname?'':h.slice(0,80)}
 var v={ref:ref()},rh=host(),uc=utmc();if(rh)v.ref_host=rh;if(uc)v.utm_content=uc;send('web_page_viewed',v);
+// 앱으로 넘길 출처(render.ts openInApp) — 처음 들어온 경로를 세션 동안 잇는다: 목록에서 공고로 옮겨 가면 ref가 internal이 된다
+var src={ref:v.ref,uc:uc};try{if(v.ref==='internal'){var o=JSON.parse(sessionStorage.getItem('gb_src')||'null');if(o&&o.ref)src=o}else sessionStorage.setItem('gb_src',JSON.stringify(src))}catch(e){}try{window.gbSrc=src}catch(e){}
 document.addEventListener('click',function(ev){var a=ev.target&&ev.target.closest&&ev.target.closest('[data-mp]');if(!a)return;var x={},s=a.getAttribute('data-mp-store'),w=a.getAttribute('data-mp-where');if(s)x.store=s;if(w)x.where=w;send(a.getAttribute('data-mp'),x)},true);
 })();</script>
 </body>
