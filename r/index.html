@@ -67,6 +67,8 @@ function host(){var r=document.referrer,h;if(!r)return'';try{h=new URL(r).hostna
 var v={ref:ref()},rh=host(),uc=utmc();if(rh)v.ref_host=rh;if(uc)v.utm_content=uc;send('web_page_viewed',v);
 // 앱으로 넘길 출처(render.ts openInApp) — 처음 들어온 경로를 세션 동안 잇는다: 목록에서 공고로 옮겨 가면 ref가 internal이 된다
 var src={ref:v.ref,uc:uc};try{if(v.ref==='internal'){var o=JSON.parse(sessionStorage.getItem('gb_src')||'null');if(o&&o.ref)src=o}else sessionStorage.setItem('gb_src',JSON.stringify(src))}catch(e){}try{window.gbSrc=src}catch(e){}
+// 구역 노출(web_section_viewed) — 한 구역 한 번
+try{var seen={},io=new IntersectionObserver(function(es){for(var i=0;i<es.length;i++){var e=es[i],k=e.target.getAttribute('data-sec');if(!k||seen[k]||!e.isIntersecting)continue;if(e.intersectionRatio>=0.5||e.intersectionRect.height>=(window.innerHeight||0)*0.4){seen[k]=1;io.unobserve(e.target);send('web_section_viewed',{section:k})}}},{threshold:[0,0.25,0.5,0.75,1]});var ss=document.querySelectorAll('[data-sec]');for(var j=0;j<ss.length;j++)io.observe(ss[j])}catch(e){}
 document.addEventListener('click',function(ev){var a=ev.target&&ev.target.closest&&ev.target.closest('[data-mp]');if(!a)return;var x={},s=a.getAttribute('data-mp-store'),w=a.getAttribute('data-mp-where');if(s)x.store=s;if(w)x.where=w;send(a.getAttribute('data-mp'),x)},true);
 })();</script>
 </body>
